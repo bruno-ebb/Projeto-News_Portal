@@ -1,13 +1,12 @@
 #primary {
-  padding-block: 20px;
+  padding-block: 2rem;
 
-  div {
+  & div {
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
-  /* NESTING CSS */
   div:nth-child(2) {
     margin-inline: auto;
   }
@@ -18,8 +17,35 @@
 }
 
 #secondary {
-  padding-block: 14px;
+  padding-block: 1.4rem;
   border: solid 1px var(--stroke-color);
   border-inline: none;
   justify-content: space-between;
+
+  gap: 1.6rem;
+  overflow-x: auto;
+
+  & a {
+    white-space: nowrap;
+  }
+
+}
+
+
+/* --------------------------------------------------------- */
+
+
+@media (width >= 800px) {
+  #secondary {
+    padding-block: 1.4rem;
+    border: solid 1px var(--stroke-color);
+    border-inline: none;
+    justify-content: space-between;
+
+    gap: 3.2rem;
+    
+    & a {
+      white-space: normal;
+    }
+  }
 }

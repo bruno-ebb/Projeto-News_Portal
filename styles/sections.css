@@ -1,17 +1,17 @@
 section header {
   border-top: 1px solid var(--stroke-color);
-  padding-block: 12px 24px;
+  padding-block: 1.2rem 2.4rem;
   font: var(--text-span);
 
   a {
     justify-self: end;
     align-items: center;
-    gap: 8px;
+    gap: .8rem;
 
     span {
       background-image: url(../assets/icons/ArrowRight.svg);
-      width: 16px;
-      height: 16px;
+      width: 1.6rem;
+      height: 1.6rem;
     }
 
     &:hover span {
@@ -23,16 +23,36 @@ section header {
 #featured {
   grid-area: featured;
 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  grid-auto-flow: row;
+  gap: 1.6rem;
+  
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
   img {
     height: 100%;
     object-fit: cover;
   }
+
+  & > figure:first-child {
+    min-height: 41.6rem;
+  }
+ 
 }
 
+
 .card {
-  border-radius: 4px;
+  border-radius: .4rem;
   position: relative;
   overflow: hidden;
+
+  min-height: 20rem;
 
   &::before {
     content: "";
@@ -49,16 +69,19 @@ section header {
   figcaption {
     position: absolute;
     bottom: 0;
+    padding: 2.4rem;
 
-    padding: 24px;
+    & .card:not(:first-child) & {
+      padding: 1.2rem;
+    }
 
     /* verifica se tem alguma tag text-lg dentro do figcaption */
     &:has(.text-lg) {
-      padding: 12px;
+      padding: 1.2rem;
     }
 
-    h2 {
-      margin-top: 8px;
+    & h2 {
+      margin-top: .8rem;
 
        /* adiciona os três pontos no fim da frase após 3 linhas de texto */
        display: -webkit-box;
@@ -71,29 +94,25 @@ section header {
   }
 }
 
+
 #weekly {
   grid-area: weekly;
 
-
-  &>div {
-    grid-template-columns: repeat(4, 292px);
+  & > div {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
-  img {
-    height: 160px;
-  }
-
-  figure {
+  & figure {
     position: relative;
 
     .content-tag {
       position: absolute;
-      top: 8px;
-      left: 8px;
+      top: .8rem;
+      left: .8rem;
     }
 
     p {
-      margin-top: 8px;
+      margin-top: .8rem;
       font-weight: 800;
 
       display: -webkit-box;
@@ -103,26 +122,24 @@ section header {
        overflow: hidden;
        text-overflow: ellipsis;
     }
-
   }
-
 }
 
 #ai {
   grid-area: ai;
 
   img {
-    width: 176px;
+    width: 8rem;
     aspect-ratio: 1/1;
     object-fit: cover;
   }
 
   h3 {
-    margin-block: 8px 4px;
-
+    margin-block: .8rem .4rem;
   }
 
   p {
+    color: var(--text-color-secondary);
     display: -webkit-box;
       -webkit-line-clamp: 4;
       line-clamp: 4;
@@ -130,7 +147,20 @@ section header {
       overflow: hidden;
       text-overflow: ellipsis;
   }
+
+  & article.grid {
+    gap: 1.6rem;
+  }
+
+  & article.grid div:first-child {
+    order: 2;
+  }
+
+  & article.grid div:last-child {
+    order: 1;
+  }
 }
+
 
 #aside {
   grid-area: aside;
@@ -138,19 +168,19 @@ section header {
 }
 
 #ads img {
-  border-radius: 4px;
+  border-radius: .4rem;
 }
 
 #more {
 
-  margin-top: 32px;
+  margin-top: 3.2rem;
 
   h3 {
-    margin-top: 8px;
+    margin-top: .8rem;
   }
 
   img{
-    width: 72px;
+    width: 7.2rem;
     aspect-ratio: 1/1;
     object-fit: cover;
   }
@@ -163,4 +193,37 @@ section header {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+
+/* --------------------------------------------------------- */
+
+
+@media (width >= 800px) {
+ 
+  #featured {
+    grid-area: featured;
+
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+
+    & > div {
+      display: grid;
+    }
+  }
+
+  #ai {
+
+    & img {
+      width: 17.6rem;
+    }
+
+    & article.grid div:first-child {
+      order: 1;
+    }
+
+    & article.grid div:last-child {
+      order: 2;
+    }
+  }
 }

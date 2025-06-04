@@ -13,11 +13,11 @@
 }
 
 .gap-16 {
-  gap: 16px;
+  gap: 1.6rem;
 }
 
 .gap-32 {
-  gap: 32px;
+  gap: 3.2rem;
 }
 
 .text-2xl {
@@ -34,4 +34,20 @@
 
 .text-sm {
   font: var(--text-sm);
+}
+
+.desktop-only {
+  display: none;
+}
+
+
+/* --------------------------------------------------------- */
+
+
+@media (width >= 800px) {
+
+  .desktop-only {
+    display: revert;
+  }
+
 }
